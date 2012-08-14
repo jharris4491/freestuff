@@ -33,7 +33,7 @@ public class SubCityList extends Activity {
 	        super.onCreate(savedInstanceState);
 			setContentView(R.layout.subcities);
 			
-			// for getting a message if necessary 
+		// for getting a message if necessary 
 //			state = (String) getIntent().getSerializableExtra("message");
 			
 			// Find Views 

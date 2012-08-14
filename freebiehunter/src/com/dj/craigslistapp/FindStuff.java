@@ -147,6 +147,6 @@ public class FindStuff extends Activity {
 			List<Element> listings = list.getAllElementsByClass("row");
 			
 			return listings;		
-		}
-	
+	}
+
 }
