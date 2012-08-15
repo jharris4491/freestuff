@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="hello">Thanks For Using The Freebie Hunter!</string>
+    <string name="hello">Welcome to Freebie Hunter!</string>
     <string name="app_name">Freebiehunter</string>
-    <string name="LocationButton">Location (Hood)</string>
+    <string name="LocationButton">Pick a Location</string>
     <string name="findStuffButton">Find Stuff!</string>
     <string name="callButton">   Call   </string>
     <string name="emailButton">   Email   </string>  
     <string name="mapItButton">   Map It   </string>
+    <string name="mainInfo">Thanks for using out Freebie Hunter App! Feel free to select a locationa and get started!</string>
 
 </resources>

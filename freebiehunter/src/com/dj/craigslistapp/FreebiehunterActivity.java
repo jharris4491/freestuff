@@ -16,9 +16,9 @@ import android.widget.TextView;
 public class FreebiehunterActivity extends Activity {
 
 	private static final String TAG = "FreebieHunterActivity";
-	Button locationButton;
+	Button locationBtn;
 	Button findStuffButton;
-	TextView tv;
+	TextView textView;
 	private FreebieApp app;
 
 	/** Called when the activity is first created. */
@@ -26,59 +26,77 @@ public class FreebiehunterActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-
 		// Find Views
 		app = (FreebieApp) getApplication();
-		locationButton = (Button) findViewById(R.id.buttonLocation);
+		locationBtn = (Button) findViewById(R.id.buttonLocation);
+		Log.i(TAG, "location button value: " + locationBtn.toString()); 
 		findStuffButton = (Button) findViewById(R.id.buttonfindStuff);
-		tv = (TextView) findViewById(R.id.mainText);
+		textView = (TextView) findViewById(R.id.locationDisplay);
 
+		// Eventually deprecate this for on start to deserialize the App
+		// variable and pull this in
+		// Persistence for the location previously selected.
 		String FILENAME = "location";
-		byte[] loc = new byte[99];
-		FileInputStream fos = null;
+		byte[] locationBuffer = new byte[99];
+		FileInputStream locationInputStream = null;
 		if (app.getLocationURL().equals("")) {
 			try {
-				fos = openFileInput(FILENAME);
-				fos.read(loc);
-				fos.close();
-				app.setLocationURL(new String(loc));
-			} catch (FileNotFoundException e1) {
-				e1.printStackTrace();
+				locationInputStream = openFileInput(FILENAME);
+				locationInputStream.read(locationBuffer);
+				locationInputStream.close();
+				app.setLocationURL(new String(locationBuffer));
+			} catch (FileNotFoundException e) {
+				Log.e(TAG,
+						"While reading from location file: FileNotFoundException Occured");
+				Log.e(TAG, "Buffer Size = " + locationBuffer.length
+						+ "Filename = " + FILENAME);
 			} catch (IOException e) {
-				e.printStackTrace();
+				Log.e(TAG,
+						"While reading from location file: IOException Occured");
+				Log.e(TAG, "Buffer Size = " + locationBuffer.length
+						+ "Filename = " + FILENAME);
 			}
 		}
-
+		
+		Log.i(TAG, "Location Selection done, Setting OnClickListener for Location Button");
 		// Set Attributes
-		locationButton.setOnClickListener(new OnClickListener() {
+		locationBtn.setOnClickListener(new OnClickListener() {
 			// called when button is clicked
 			public void onClick(View v) {
+				Log.i(TAG, "onClick implementation");
 				Log.d(TAG, "onClicked");
 				// send to location activity to retrieve location.
 				Bundle b = new Bundle();
+				Log.i(TAG, "Made Bundle");
 				b.putString("message", "Location Activity Started");
-				Intent i = new Intent(FreebiehunterActivity.this,
-						Location.class);
-				i.putExtras(b);
-				startActivity(i);
+				Log.i(TAG, "Bundle message created");
+				Intent locationSelectionIntent = new Intent(
+						FreebiehunterActivity.this, Location.class);
+				Log.i(TAG, "Intent created");
+				locationSelectionIntent.putExtras(b);
+				Log.i(TAG, "Attached bundle to intents");
+				startActivity(locationSelectionIntent);
 			}
 		});
-
+		
+		Log.i(TAG, "Setting OnClickListener for Find Button");
 		findStuffButton.setOnClickListener(new OnClickListener() {
-			// called when button is clicked
 			public void onClick(View v) {
 				Log.d(TAG, "onClicked");
 				// send to location activity to retrieve location.
-				Bundle b = new Bundle();
-				b.putString("message", "FindStuff Activity Started");
-				Intent i = new Intent(FreebiehunterActivity.this,
-						FindStuff.class);
-				i.putExtras(b);
-				startActivity(i);
+				Bundle bundle = new Bundle();
+				bundle.putString("message", "FindStuff Activity Started");
+				Intent findListingsIntent = new Intent(
+						FreebiehunterActivity.this, FindStuff.class);
+				findListingsIntent.putExtras(bundle);
+				startActivity(findListingsIntent);
 			}
 		});
-		tv.setText(app.getCity() + "\n" + app.getLocationURL() + "\n");
 
+		if (app.getCity().length() > 0)
+			textView.setText("Location: " + app.getCity());
+		else
+			textView.setText("Location: No Location Selected");
 	}
 
 }

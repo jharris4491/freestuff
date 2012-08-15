@@ -5,18 +5,47 @@
     android:orientation="vertical" >
 
     <TextView
+        android:id="@+id/mainText"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello" android:id="@+id/mainText"/>
-    
-    <!-- Location Button  -->
-	<Button android:layout_width="fill_parent"
-	android:layout_height="wrap_content" android:text="@string/LocationButton"
-	android:textSize="20sp" android:id="@+id/buttonLocation"></Button>
-	
-	<!-- Find Stuff Button  -->
-	<Button android:layout_width="fill_parent"
-	android:layout_height="wrap_content" android:text="@string/findStuffButton"
-	android:textSize="20sp" android:id="@+id/buttonfindStuff"></Button>
+        android:text="@string/hello"
+        android:textSize="28dp"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/mainInfo"
+        android:textSize="18dp"
+        android:paddingTop="20dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="15dp" />
+
+    <TextView
+        android:id="@+id/locationDisplay"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14dp" />
+
+    <!-- Location Button -->
+
+    <Button
+        android:id="@+id/buttonLocation"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/LocationButton"
+        android:textSize="20sp" >
+    </Button>
+
+    <!-- Find Stuff Button -->
+
+    <Button
+        android:id="@+id/buttonfindStuff"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/findStuffButton"
+        android:textSize="20sp" >
+    </Button>
 
 </LinearLayout>

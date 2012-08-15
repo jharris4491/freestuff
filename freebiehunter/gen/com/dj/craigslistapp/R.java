@@ -14,8 +14,8 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int buttonLocation=0x7f050013;
-        public static final int buttonfindStuff=0x7f050014;
+        public static final int buttonLocation=0x7f050014;
+        public static final int buttonfindStuff=0x7f050015;
         public static final int callButton=0x7f05000d;
         public static final int citylist=0x7f050001;
         public static final int citytext=0x7f050000;
@@ -30,13 +30,14 @@ public final class R {
         public static final int imageView7=0x7f05000b;
         public static final int imageView8=0x7f05000c;
         public static final int listingcontenttext=0x7f050004;
+        public static final int locationDisplay=0x7f050013;
         public static final int locationtext=0x7f050010;
         public static final int mainText=0x7f050012;
         public static final int mapItButton=0x7f05000f;
         public static final int statelist=0x7f050011;
         public static final int stufflist=0x7f050003;
-        public static final int subcitylist=0x7f050016;
-        public static final int subcitytext=0x7f050015;
+        public static final int subcitylist=0x7f050017;
+        public static final int subcitytext=0x7f050016;
     }
     public static final class layout {
         public static final int city=0x7f030000;
@@ -53,6 +54,7 @@ public final class R {
         public static final int emailButton=0x7f040005;
         public static final int findStuffButton=0x7f040003;
         public static final int hello=0x7f040000;
+        public static final int mainInfo=0x7f040007;
         public static final int mapItButton=0x7f040006;
     }
 }
